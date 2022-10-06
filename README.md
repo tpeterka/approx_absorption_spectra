@@ -32,7 +32,7 @@ cd /path/to/approx
 python3 encode-csv.py -i <input csv file, required> -g <geom_degree, default 1> -v <vars_degree, default 3> -n <nctrl_pts, default
 ninput_pts>
 ```
-# Load and MFA model from disk and evaluate a point
+# Load an MFA model from disk and evaluate a point
 
 ```
 python3 evaluate-pt.py -i <input mfa file, default approx.mfa> -p <parameter where to evaluate [0.0 - 1.0], required>
