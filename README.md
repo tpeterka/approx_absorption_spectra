@@ -28,7 +28,6 @@ make -j install
 # Encode an MFA model and save it to disk
 
 ```
-cd /path/to/approx
 python3 encode-csv.py -i <input csv file, required> -g <geom_degree, default 1> -v <vars_degree, default 3> -n <nctrl_pts, default
 ninput_pts>
 ```
