@@ -24,7 +24,8 @@ cmake .. \
 
 make -j
 
-export PYTHONPATH=/path/to/mfa/build/python:/path/to/mfa/build/include/diy/lib:$PYTHONPATH # replace /path/to/mfa with your actual path
+# in the line below, change /path/to/mfa to your actual path
+export PYTHONPATH=/path/to/mfa/build/python:/path/to/mfa/build/include/diy/lib:$PYTHONPATH
 
 ```
 # Encode an MFA model and save it to disk
