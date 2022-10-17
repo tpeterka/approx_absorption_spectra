@@ -19,11 +19,13 @@ cd build
 rm CMakeCache.txt
 
 cmake .. \
--DCMAKE_INSTALL_PREFIX=/path/to/mfa/install \   # replace with your actual path
 -DBUILD_SHARED_LIBS=true \
 -Dmfa_python=true
 
-make -j install
+make -j
+
+export PYTHONPATH=/path/to/mfa/build/python:/path/to/mfa/build/include/diy/lib:$PYTHONPATH # replace /path/to/mfa with your actual path
+
 ```
 # Encode an MFA model and save it to disk
 
