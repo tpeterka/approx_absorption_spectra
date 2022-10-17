@@ -19,9 +19,9 @@ cd build
 rm CMakeCache.txt
 
 cmake .. \
--DCMAKE_INSTALL_PREFIX=/path/to/mfa/install \
+-DCMAKE_INSTALL_PREFIX=/path/to/mfa/install \   # replace with your actual path
 -DBUILD_SHARED_LIBS=true \
--Dpython=true
+-Dmfa_python=true
 
 make -j install
 ```
