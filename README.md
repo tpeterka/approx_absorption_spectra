@@ -16,11 +16,8 @@ cd diy
 mkdir build
 cd build
 
-rm CMakeCache.txt
-
-cmake .. \
--Dpython=true
-
+rm CMakeCache.txt           # ignore error if file does not exist
+cmake .. -Dpython=true
 make -j
 
 ```
@@ -42,12 +39,8 @@ cd mfa
 mkdir build
 cd build
 
-rm CMakeCache.txt
-
-cmake .. \
--DBUILD_SHARED_LIBS=true \
--Dmfa_python=true
-
+rm CMakeCache.txt               # ignore error if file does not exist
+cmake .. -Dmfa_python=true
 make -j
 ```
 # Set up PYTHONPATH
