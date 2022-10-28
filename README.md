@@ -1,3 +1,29 @@
+# Install DIY
+
+Build dependencies
+
+- C++11 or higher compiler
+- [MPI](http://www.mpich.org)
+
+```
+git clone https://github.com/diatomic/diy
+```
+
+# Build DIY
+
+```
+cd diy
+mkdir build
+cd build
+
+rm CMakeCache.txt
+
+cmake .. \
+-Dpython=true
+
+make -j
+
+```
 # Install MFA
 
 Build dependencies
@@ -23,11 +49,15 @@ cmake .. \
 -Dmfa_python=true
 
 make -j
-
-# in the line below, change /path/to/mfa to your actual path
-export PYTHONPATH=/path/to/mfa/build/python:/path/to/mfa/build/include/diy/lib:$PYTHONPATH
+```
+# Set up PYTHONPATH
 
 ```
+export PYTHONPATH=/path/to/diy/build/lib    # change /path/to/diy to your actual path
+export PYTHONPATH=/path/to/mfa/build/python:$PYTHONPATH     # change /path/to/mfa/to your actual path
+
+```
+
 # Encode an MFA model and save it to disk
 
 ```
