@@ -7,6 +7,9 @@ import os
 
 ORIGINAL_DATA_PATH='datasets/'
 MFA_DATA_PATH='MFA/'
+IDX_MAX=200
+
+
 Cases={}
 Cases['1']={'varext':'001','nctrl':450,'geom_degree':1,'vars_degree':2}
 Cases['2']={'varext':'002','nctrl':0,'geom_degree':1,'vars_degree':3}
@@ -34,7 +37,7 @@ def ReadAllFilesToMFA(FILE_PATH,Case,options=None):
             fn=dir_list[k]
             tot_fn=len(fn)
 
-            print('fn ({:}): {:}; {:}=={:} :> {:} [{:}]'.format(lv,fn,fn[-lv:-1]+fn[-1],varext,fn[-lv:-1]+fn[-1]==varext,fn[0:(tot_fn-lv)]))
+            #print('fn ({:}): {:}; {:}=={:} :> {:} [{:}]'.format(lv,fn,fn[-lv:-1]+fn[-1],varext,fn[-lv:-1]+fn[-1]==varext,fn[0:(tot_fn-lv)]))
 
             if(fn[-lv:-1]+fn[-1]==varext):
                 MFA_FILES.append(MFA_DATA_PATH+fn)
@@ -79,6 +82,19 @@ def ReadFileToMFA(INPUT_FILE,OUTPUT_FILE,options=None):
                 pass
         # sort rows by first column
         input_pts = input_pts[input_pts[:, 0].argsort()]
+        
+
+        print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+        #input_pts = input_pts[0:IDX_MAX, :]
+        print(np.asarray(input_pts).shape)
+        print(input_pts[0,:])
+        
+        #input_pts_truncated=np.zeros(np.asarray(input_pts).shape)
+        #input_pts_truncated[0:IDX_MAX,0] = input_pts[0:IDX_MAX,0]
+        #input_pts_truncated[0:IDX_MAX,1] = input_pts[0:IDX_MAX,1]
+        #input_pts = input_pts_truncated.tolist()
+        print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+
 
     # default program arguments
     error               = True
