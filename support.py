@@ -11,8 +11,9 @@ IDX_MAX=200
 
 
 Cases={}
-Cases['1']={'varext':'001','nctrl':450,'geom_degree':1,'vars_degree':2}
+Cases['1']={'varext':'001','nctrl':0,'geom_degree':1,'vars_degree':2}
 Cases['2']={'varext':'002','nctrl':0,'geom_degree':1,'vars_degree':3}
+Cases['3']={'varext':'003','nctrl':0,'geom_degree':1,'vars_degree':4}
 
 def ReadAllFilesToMFA(FILE_PATH,Case,options=None):
     FILE_LIST=[]
@@ -82,17 +83,17 @@ def ReadFileToMFA(INPUT_FILE,OUTPUT_FILE,options=None):
                 pass
         # sort rows by first column
         input_pts = input_pts[input_pts[:, 0].argsort()]
-        
+        input_pts = input_pts[0:IDX_MAX,0:2]
 
         print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-        #input_pts = input_pts[0:IDX_MAX, :]
-        print(np.asarray(input_pts).shape)
-        print(input_pts[0,:])
+        print("Shape before selection: {:}".format(input_pts.shape))
+        print(input_pts[0:3,0:2])
         
-        #input_pts_truncated=np.zeros(np.asarray(input_pts).shape)
-        #input_pts_truncated[0:IDX_MAX,0] = input_pts[0:IDX_MAX,0]
-        #input_pts_truncated[0:IDX_MAX,1] = input_pts[0:IDX_MAX,1]
-        #input_pts = input_pts_truncated.tolist()
+        #input_pts_truncated=np.zeros((IDX_MAX,input_pts.shape[1]))
+        #input_pts_truncated[0:IDX_MAX,0:2] = input_pts[0:IDX_MAX]
+        #input_pts=input_pts_truncated.copy()
+        #print("Shape after selection: {:}".format(input_pts.shape))
+        #print(input_pts[0:3,0:2])
         print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 
@@ -160,7 +161,6 @@ def ReadFileToMFA(INPUT_FILE,OUTPUT_FILE,options=None):
     diy.write_blocks(OUTPUT_FILE, m, save = mfa.save_block)
 
 def ReadOriginalFile(fn):
-    IDX_MAX=200
     spec_unit_list=[]
     with open(fn, newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
